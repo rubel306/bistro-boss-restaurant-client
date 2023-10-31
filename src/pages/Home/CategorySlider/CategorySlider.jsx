@@ -14,8 +14,8 @@ const CategorySlider = () => {
   return (
     <section>
       <SectionTitle
-        heading={"From 11:00am to 10:00pm"}
-        subHeading={"ORDER ONLINE"}
+        subHeading={"From 11:00am to 10:00pm"}
+        heading={"ORDER ONLINE"}
       ></SectionTitle>
       <Swiper
         slidesPerView={4}
