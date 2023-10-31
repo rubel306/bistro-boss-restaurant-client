@@ -1,0 +1,20 @@
+.logo {
+  font-family: "Cinzel", serif;
+}
+.logo h3 {
+  color: #fff;
+  font-family: Cinzel;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+.logo h4 {
+  color: #fff;
+  font-family: Cinzel;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 9.12px;
+}
