@@ -1,6 +1,6 @@
 import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import img1 from "../../../assets/home/featured.jpg";
+import img1 from "../../../assets/home/salad.png";
 const ChefRecommandation = () => {
   return (
     <div className="mb-28">
@@ -15,7 +15,7 @@ const ChefRecommandation = () => {
           <p className="text-black px-8 text-sm mb-6">
             Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
           </p>
-          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12">
+          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12 hover:bg-[#1F2937]">
             Add To Cart
           </button>
         </div>
@@ -25,7 +25,7 @@ const ChefRecommandation = () => {
           <p className="text-black px-8 text-sm mb-6">
             Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
           </p>
-          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12">
+          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12 hover:bg-[#1F2937]">
             Add To Cart
           </button>
         </div>
@@ -35,7 +35,7 @@ const ChefRecommandation = () => {
           <p className="text-black px-8 text-sm mb-6">
             Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
           </p>
-          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12">
+          <button className="px-8 py-4 bg-[#E8E8E8] border-b-4 rounded-lg border-[#BB8506] uppercase font-semibold text-[#BB8506] mb-12 hover:bg-[#1F2937]">
             Add To Cart
           </button>
         </div>
