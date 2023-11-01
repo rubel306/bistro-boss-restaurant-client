@@ -9,10 +9,10 @@ const SectionCover = ({ img, title, description }) => {
       bgImageAlt="the section bg"
       strength={-200}
     >
-      <div className="h-[700px] flex flex-col justify-center items-center">
+      <div className="h-[700px] flex flex-col px-20 justify-center items-center">
         <div
           style={{ backgroundColor: "rgba(21, 21, 21, 0.6)" }}
-          className=" text-white px-80 text-center py-32"
+          className=" text-white px-72 text-center py-32"
         >
           <h2 className="font-bold font-[Cinzel] text-6xl uppercase py-2">
             {title}
