@@ -2,6 +2,7 @@ import React from "react";
 import MenuItem from "../../../Shared/MenuItem/MenuItem";
 import SectionCover from "../../../Shared/SectionCover/SectionCover";
 import BorderdBottomBtn from "../../../components/BorderdBottomBtn/BorderdBottomBtn";
+import { Link } from "react-router-dom";
 
 const MenuCategory = ({ items, title, description, img }) => {
   return (
@@ -19,7 +20,11 @@ const MenuCategory = ({ items, title, description, img }) => {
         ))}
       </div>
       <div className="text-center">
-        <BorderdBottomBtn text={"ORDER YOUR FAVOURITE FOOD"}></BorderdBottomBtn>
+        <Link to={`/order/${title}`}>
+          <BorderdBottomBtn
+            text={"ORDER YOUR FAVOURITE FOOD"}
+          ></BorderdBottomBtn>
+        </Link>
       </div>
     </div>
   );
