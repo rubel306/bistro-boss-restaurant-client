@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import PopularMenuItem from "../PopularMenuItem/PopularMenuItem";
+import MenuItem from "../../../Shared/MenuItem/MenuItem";
 import BorderdBottomBtn from "../../../components/BorderdBottomBtn/BorderdBottomBtn";
 
 const PopularMenu = () => {
@@ -21,7 +21,7 @@ const PopularMenu = () => {
       ></SectionTitle>
       <div className="grid grid-cols-2 gap-8 my-12">
         {menu.map((item) => (
-          <PopularMenuItem key={item._id} item={item}></PopularMenuItem>
+          <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
       <div className="text-center ">

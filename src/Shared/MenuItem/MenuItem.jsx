@@ -1,6 +1,6 @@
 import React from "react";
 
-const PopularMenuItem = ({ item }) => {
+const MenuItem = ({ item }) => {
   const { name, recipe, image, price } = item;
   return (
     <div className="flex space-x-4">
@@ -19,4 +19,4 @@ const PopularMenuItem = ({ item }) => {
   );
 };
 
-export default PopularMenuItem;
+export default MenuItem;
