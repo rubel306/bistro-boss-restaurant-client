@@ -1,27 +1,15 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   const navItems = (
     <>
       <li>
-        <a>Item 1</a>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li>
-              <a>Submenu 1</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-          </ul>
-        </details>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <a>Item 3</a>
+        <Link to={"/menu"}>Menu</Link>
       </li>
     </>
   );
