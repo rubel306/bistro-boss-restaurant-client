@@ -1,26 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/logo.png";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const navItems = (
     <>
-      <li>
-        <Link to={"/"}>Home</Link>
+      <li className="hover:bg-[#BB8506]">
+        <Link className=" hover:text-white" to={"/"}>
+          Home
+        </Link>
       </li>
-      <li>
-        <Link to={"/menu"}>Our Menu</Link>
+      <li className="hover:bg-[#BB8506]">
+        <Link className=" hover:text-white" to={"/menu"}>
+          Our Menu
+        </Link>
       </li>
-      <li>
-        <Link to={"/order/salad"}>Order Food</Link>
+      <li className="hover:bg-[#BB8506]">
+        <Link className=" hover:text-white" to={"/order/salad"}>
+          Order Food
+        </Link>
       </li>
-      <li>
-        <Link to={"/login"}>Login</Link>
-      </li>
+
+      {user ? (
+        <>
+          <button
+            onClick={logOut}
+            className="btn btn-active btn-ghost hover:bg-[#BB8506]"
+          >
+            Log Out
+          </button>
+        </>
+      ) : (
+        <>
+          <li className="hover:bg-[#BB8506]">
+            <Link className=" hover:text-white" to={"/login"}>
+              Login
+            </Link>
+          </li>
+          <li className="hover:bg-[#BB8506]">
+            <Link className=" hover:text-white" to={"/signup"}>
+              Sign Up
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
-    <div className="navbar bg-black fixed z-10 opacity-50 text-white max-w-screen-xl">
+    <div
+      style={{ backgroundColor: "rgba(21, 21, 21, 0.5)" }}
+      className="navbar fixed z-10  text-white max-w-screen-xl"
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -53,9 +85,6 @@ const NavBar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
       </div>
     </div>
   );

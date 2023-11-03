@@ -1,16 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
 import loginImg from "../../assets/others/authentication1.png";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
-  const captchaRef = useRef(null);
+  // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+  const { logIn } = useContext(AuthContext);
+
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -21,10 +24,28 @@ const LogIn = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    logIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        Swal.fire({
+          icon: "success",
+          title: "Login successful ",
+          text: "You are Logged in successfully",
+        });
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Opps.... ",
+          text: "Something wring! Please try again",
+        });
+        console.log(error);
+      });
   };
 
-  const handleRecaptcha = () => {
-    const captchaValue = captchaRef.current.value;
+  const handleRecaptcha = (e) => {
+    const captchaValue = e.target.value;
     if (validateCaptcha(captchaValue)) {
       setDisabled(false);
     } else {
@@ -71,35 +92,30 @@ const LogIn = () => {
               <LoadCanvasTemplate />
               <div className="form-control">
                 <input
-                  ref={captchaRef}
+                  // ref={captchaRef}
+                  onBlur={handleRecaptcha}
                   type="text"
                   name="recaptcha"
                   className="input input-bordered"
                   required
                 />
-                <button
-                  onClick={handleRecaptcha}
-                  className="btn btn-outline btn-xs"
-                >
-                  Validate Captcha
-                </button>
               </div>
 
               <div className="form-control mt-6">
                 <input
                   disabled={disabled}
                   type="submit"
-                  value={"submit"}
+                  value={"Log In"}
                   className="btn btn-primary"
                 />
               </div>
             </form>
             <label className="label">
               <Link
-                to="/register"
+                to="/signup"
                 className="label-text-alt link link-hover text-center mb-8 ms-4"
               >
-                New in Bistro Boss ? Please Register
+                New in Bistro Boss ? Please Sign Up
               </Link>
             </label>
             <div className="px-7 text-center">
