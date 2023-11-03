@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/others/authentication1.png";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { signUp } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { signUp, updateUser } = useContext(AuthContext);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,7 +17,9 @@ const SignUp = () => {
     signUp(email, password)
       .then((result) => {
         const newUser = result.user;
+
         console.log("New Registerd User: ", newUser);
+
         form.reset();
       })
       .catch((error) => console.log(error));
@@ -24,15 +28,35 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     signUp(data.email, data.password)
       .then((result) => {
         const newUser = result.user;
+        updateUser(data.name, data.photo)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Successful ",
+              text: "Thanks for Sign Up",
+            });
+            navigate("/");
+            reset();
+            console.log("Profile Photo and name updated ");
+          })
+          .catch((error) => console.log(error));
         console.log("New Registered User: ", newUser);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Please try again",
+        });
+        console.log(error);
+      });
     console.log("react hook form data", data);
   };
   return (
@@ -61,6 +85,20 @@ const SignUp = () => {
                   />
                   {errors.name && (
                     <span className="text-red-600">Name is required</span>
+                  )}
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Photo Url</span>
+                  </label>
+                  <input
+                    {...register("photo", { required: true })}
+                    type="text"
+                    placeholder="Photo URL "
+                    className="input input-bordered"
+                  />
+                  {errors.photo && (
+                    <span className="text-red-600">Photo URL is required</span>
                   )}
                 </div>
                 <div className="form-control">

@@ -22,6 +22,11 @@ const NavBar = () => {
           Order Food
         </Link>
       </li>
+      <li className="hover:bg-[#BB8506]">
+        <Link className=" hover:text-white" to={"/secret"}>
+          Secret
+        </Link>
+      </li>
 
       {user ? (
         <>
