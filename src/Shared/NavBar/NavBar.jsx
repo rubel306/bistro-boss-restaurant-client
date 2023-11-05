@@ -30,7 +30,10 @@ const NavBar = () => {
         </Link>
       </li>
       <li>
-        <Link className="bg-[#1F2937] mx-1 hover:text-white hover:bg-[#BB8506]">
+        <Link
+          to={"/dashboard/mycart"}
+          className="bg-[#1F2937] mx-1 hover:text-white hover:bg-[#BB8506]"
+        >
           <FaShoppingCart></FaShoppingCart>
           <span className="badge badge-secondary">+ {cart?.length || 0}</span>
         </Link>
