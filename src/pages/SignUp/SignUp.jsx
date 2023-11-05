@@ -25,6 +25,7 @@ const SignUp = () => {
       .catch((error) => console.log(error));
   };
 
+  //signup with react hook form
   const {
     register,
     handleSubmit,
@@ -37,14 +38,27 @@ const SignUp = () => {
         const newUser = result.user;
         updateUser(data.name, data.photo)
           .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Successful ",
-              text: "Thanks for Sign Up",
-            });
-            navigate("/");
-            reset();
-            console.log("Profile Photo and name updated ");
+            const userInfo = { name: data.name, email: data.email };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  Swal.fire({
+                    icon: "success",
+                    title: "Successful ",
+                    text: "Thanks for Sign Up",
+                  });
+                  navigate("/");
+                  reset();
+                  console.log("Profile Photo and name updated ");
+                }
+              });
           })
           .catch((error) => console.log(error));
         console.log("New Registered User: ", newUser);
