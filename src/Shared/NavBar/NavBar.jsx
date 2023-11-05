@@ -3,28 +3,36 @@ import logo from "../../assets/logo.png";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
+
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
   const navItems = (
     <>
-      <li className="hover:bg-[#BB8506]">
-        <Link className=" hover:text-white" to={"/"}>
+      <li>
+        <Link className=" hover:text-white hover:bg-[#BB8506]" to={"/"}>
           Home
         </Link>
       </li>
-      <li className="hover:bg-[#BB8506]">
-        <Link className=" hover:text-white" to={"/menu"}>
+      <li>
+        <Link className=" hover:text-white hover:bg-[#BB8506]" to={"/menu"}>
           Our Menu
         </Link>
       </li>
-      <li className="hover:bg-[#BB8506]">
-        <Link className=" hover:text-white" to={"/order/salad"}>
+      <li>
+        <Link
+          className=" hover:text-white hover:bg-[#BB8506]"
+          to={"/order/salad"}
+        >
           Order Food
         </Link>
       </li>
-      <li className="hover:bg-[#BB8506]">
-        <Link className=" hover:text-white" to={"/secret"}>
-          Secret
+      <li>
+        <Link className="bg-[#1F2937] mx-1 hover:text-white hover:bg-[#BB8506]">
+          <FaShoppingCart></FaShoppingCart>
+          <span className="badge badge-secondary">+ {cart?.length || 0}</span>
         </Link>
       </li>
 
@@ -39,13 +47,19 @@ const NavBar = () => {
         </>
       ) : (
         <>
-          <li className="hover:bg-[#BB8506]">
-            <Link className=" hover:text-white" to={"/login"}>
+          <li>
+            <Link
+              className=" hover:text-white hover:bg-[#BB8506]"
+              to={"/login"}
+            >
               Login
             </Link>
           </li>
-          <li className="hover:bg-[#BB8506]">
-            <Link className=" hover:text-white" to={"/signup"}>
+          <li>
+            <Link
+              className=" hover:text-white hover:bg-[#BB8506]"
+              to={"/signup"}
+            >
               Sign Up
             </Link>
           </li>
